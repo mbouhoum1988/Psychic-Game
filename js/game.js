@@ -11,7 +11,7 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
             var userguess = String.fromCharCode(event.keyCode).toUpperCase();
                   console.log('userguess: ' + userguess); 
                   $('#guesses').append('   '+userguess);
-             if (userguess===computer && i>0){  
+             if (userguess===computer && i>=0){  
                 i--;             
                 win++;
                 computer = letters[Math.floor(Math.random()*letters.length)];
@@ -28,6 +28,11 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
             }
             else{
                 i--;
+            }
+            if (i < 0) {
+                i=10;
+                $('#guesses').empty(userguess);
+                console.log('computer guess: '+computer);
             }
                var html = ' <h1>Psychic game</h1>'+
                '<p>Guess what letter I am thinking of</p>' +
